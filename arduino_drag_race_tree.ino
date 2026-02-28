@@ -73,7 +73,11 @@ void loop() {
       }
       // Check if unstaged
       if (digitalRead(stageSensor) == 0) {
-        phase = Phases::faulted;
+        digitalWrite(stageLed, 0);
+        digitalWrite(yellowLedOne, 0);
+        digitalWrite(yellowLedTwo, 0);
+        digitalWrite(yellowLedThree, 0);
+        phase = Phases::prestaged;
         break;
       }
       int elapsed = millis() - readyTime;
